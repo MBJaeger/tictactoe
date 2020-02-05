@@ -50,9 +50,11 @@ document.getElementById('board').addEventListener('click', onClick);
 initialize();
 
 function onClick(evt) {
+  console.log("test")
     var idx = parseInt(evt.target.id.replace('sq',''));
     if (board[idx] !== null || winner) return;
     board[idx] = turn;
+    getElementById(evt.target.id)
     turn *= -1; 
     winner = getWinner();
     render(); 
