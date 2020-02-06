@@ -13,31 +13,32 @@
 /*------Constants------*/
 var lookup = {
 '1': 'X',
-'-1': '0',
+'-1': 'O',
 'null': 'null'
 };
 
-var winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ]; 
+// var winningCombinations = [
+//     [0, 1, 2],
+//     [3, 4, 5],
+//     [6, 7, 8],
+//     [0, 3, 6],
+//     [1, 4, 7],
+//     [2, 5, 8],
+//     [0, 4, 8],
+//     [2, 4, 6]
+//   ]; 
 
 /*------Variables (state)------*/
 let board;
 let winner;
+isWinner = false;
 
 // Variables might include (board/turn/winner)
 
 
 /*------Cached Element References------*/
 var squares = document.querySelectorAll('div');
-var textContent = document.querySelector('message'); 
+var gameStatus = document.getElementById('message'); 
 
 
 // You might choose to put your game status here
@@ -50,53 +51,88 @@ document.getElementById('board').addEventListener('click', onClick);
 initialize();
 
 function onClick(evt) {
-  console.log("test")
-    var idx = parseInt(evt.target.id.replace('sq',''));
-    if (board[idx] !== null || winner) return;
-    board[idx] = turn;
-    getElementById(evt.target.id)
-    turn *= -1; 
+  if (isWinner === false) {
+  var idx = parseInt(evt.target.id.replace('sq',''));
+    if (board[idx] !== 'null') return; 
+  setLetter = document.getElementById(`sq${idx}`);
+    if (turn === 1) {
+      gameStatus.textContent = "X played";
+      board[idx] = 1;
+    } else {
+      gameStatus.textContent = "O played";
+      board[idx] = -1;
+    }
+    //var idx = parseInt(evt.target.id.replace('sq',''));
+    //if (board[idx] !== 'null'); 
+    
+    //return;
+
     winner = getWinner();
-    render(); 
+    render(idx); 
+    
+    //var renderedText = HTMLElement.innerText;
+    //HTMLElement.innerText = string;
+  } 
+  };
+
+  function getWinner() {
+      if (board[0] + board[1] + board[2] === 3 || board[3] + board[4] + board[5] === 3 || 
+        board[6] + board[7] + board[8] === 3 || board[0] + board[3] + board[6] === 3 || 
+        board[1] + board[4] + board[7] === 3 || board[2] + board[5] + board[8] === 3 ||
+        board[0] + board[4] + board[8] === 3 || board[2] + board[4] + board[6] === 3) {
+          isWinner = true;
+          gameStatus.textContent = "X Wins the Game";
+      }
+     if (board[0] + board[1] + board[2] === -3 || board[3] + board[4] + board[5] === -3 || 
+        board[6] + board[7] + board[8] === -3 || board[0] + board[3] + board[6] === -3 || 
+        board[1] + board[4] + board[7] === -3 || board[2] + board[5] + board[8] === -3 ||
+        board[0] + board[4] + board[8] === -3 || board[2] + board[4] + board[6] === -3) {
+          isWinner = true;
+        gameStatus.textContent = "O Wins the Game";
+        
+   }
+     
+      //if (board.includes(null)) return null;
+      //return 'draw';
+  }
   
-    };
-function getWinner() {
- for (var i = 0; i < winningCombinations.length; i++) {
-   if (Math.abs(board[0] + board[1] + board[2]) === 3) return board[0];
-   if (Math.abs(board[3] + board[4] + board[5]) === 3) return board[3];
-   if (Math.abs(board[6] + board[7] + board[8]) === 3) return board[6];
-   if (Math.abs(board[0] + board[3] + board[6]) === 3) return board[0];
-   if (Math.abs(board[1] + board[4] + board[7]) === 3) return board[1];
-   if (Math.abs(board[2] + board[5] + board[8]) === 3) return board[2];
-   if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0];
-   if (Math.abs(board[2] + board[4] + board[6]) === 3) return board[2];
-   if (board.includes(null)) return null;
-   return 'draw';
- };
-};
- 
-
-function render (){
-
-};
-function render(idx) {
-board.forEach(function(sq, idx) {
-});
-if (winner === 'draw') {
-textContent = "This is a tie";
-} else if (winner) {
-textContent = "WINNER!";
-}  else {
-textContent = "Give it another try";  
-}
+  function render(idx) {
+    // var sq = document.getElementById('evt.target.id');
+    // sq.textContent = turn;
+    // board[idx] = turn;
+    // turn *= -1; 
+    // winner = getWinner();
+    
+    setLetter = document.getElementById(`sq${idx}`);
+    if (turn === 1) {
+    setLetter.textContent = "X";
+    board[idx] = 1;
+    //gameStatus.textContent = "In Play..."
+    
+  } else {
+    setLetter.textContent = "O";
+    board[idx] = -1;
+    }
+    turn *= -1;  
+    
+    
+    //call a function getWinner - inside make win conditions
+    //
 };
 
 function initialize() {
-    board = [null,null,null,null,null,null,null,null,null];
+    board = ['null','null','null','null','null','null','null','null','null'];
     turn = 1;
-    winner = null;
-    render();
+  //   if board[idx] = ([1, 1, 1]) {
+  //     gameStatus.textContent = "X wins";
+  //   }
+  //  if board[idx] = ([-1, -1, -1]) {
+  //  gameStatus.textContent = "O wins";
+  //  }
+    //winner = null;
+    //render();  
 };
+
 
 
 // Some functions you might choose to use:
