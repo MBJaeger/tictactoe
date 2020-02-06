@@ -3,12 +3,13 @@
 }
 
 header {
-    background-color: rgb(221, 243, 253);
+    background-color: rgb(90, 227, 240);
     padding: 10px 10px;
 }
 
 
 body {
+    grid: 100vh;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -18,7 +19,7 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 50px;
+    font-size: 80px;
 }
 
 
@@ -38,19 +39,12 @@ section.board {
 
 div {
     border: 2px solid black;
-    font-size: 8vmin;
+    font-size: 16vmin;
     text-align: center;
     vertical-align: middle;
 }
 
 div:hover {
-    background-color: lightsteelblue;
+    background-color: rgb(160, 255, 52);
 }
     
-button {
-    font-size: 40px;
-    text: white;
-    margin-top: 30px;
-    margin-bottom: 100px;
-    background-color: lightgray;
-}

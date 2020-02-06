@@ -81,14 +81,14 @@ function onClick(evt) {
         board[1] + board[4] + board[7] === 3 || board[2] + board[5] + board[8] === 3 ||
         board[0] + board[4] + board[8] === 3 || board[2] + board[4] + board[6] === 3) {
           isWinner = true;
-          gameStatus.textContent = "X Wins the Game";
+          gameStatus.textContent = "YES! X Wins the Game!";
       }
      if (board[0] + board[1] + board[2] === -3 || board[3] + board[4] + board[5] === -3 || 
         board[6] + board[7] + board[8] === -3 || board[0] + board[3] + board[6] === -3 || 
         board[1] + board[4] + board[7] === -3 || board[2] + board[5] + board[8] === -3 ||
         board[0] + board[4] + board[8] === -3 || board[2] + board[4] + board[6] === -3) {
           isWinner = true;
-        gameStatus.textContent = "O Wins the Game";
+        gameStatus.textContent = "WOHOO! O Wins the Game!";
         
    }
      
@@ -97,11 +97,7 @@ function onClick(evt) {
   }
   
   function render(idx) {
-    // var sq = document.getElementById('evt.target.id');
-    // sq.textContent = turn;
-    // board[idx] = turn;
-    // turn *= -1; 
-    // winner = getWinner();
+ 
     
     setLetter = document.getElementById(`sq${idx}`);
     if (turn === 1) {
