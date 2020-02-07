@@ -32,7 +32,7 @@ section.board {
     grid-gap: 0vmin;
     justify-content: center;
     padding-top: 100px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     cursor: pointer;
     
 }
@@ -47,4 +47,9 @@ div {
 div:hover {
     background-color: rgb(160, 255, 52);
 }
-    
+
+button {
+    margin-top: 0px;
+    font-size: xx-large
+
+}
